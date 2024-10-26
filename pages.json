@@ -1,0 +1,99 @@
+{
+	"pages": [
+		// {
+		// 	"path": "pages/index/index",
+		// 	"style": {
+		// 		"navigationBarTitleText": "uni-app"
+		// 	}
+		// },
+		{
+			"path" : "pages/tabBar/home/home",
+			"style" : 
+			{
+				"navigationBarTitleText" : "首页",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path" : "pages/tabBar/collect/collect",
+			"style" : 
+			{
+				"navigationBarTitleText" : "收藏",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path" : "pages/tabBar/personal/personal",
+			"style" : 
+			{
+				"navigationBarTitleText" : "我",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path" : "pages/baishengdongtai/baishengdongtai",
+			"style" : 
+			{
+				"navigationBarTitleText" : "百生动态",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		},
+		{
+			"path" : "pages/baishengfuwu/baishengfuwu",
+			"style" : 
+			{
+				"navigationBarTitleText" : "百生服务",
+				"navigationStyle": "custom",
+				"enablePullDownRefresh": true
+			}
+		}
+	],
+	
+	"globalStyle": {
+		"pageOrientation": "portrait",
+		"navigationBarTitleText": "Hello uniapp",
+		"navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor": "#007AFF",
+		"backgroundColor": "#ffffff",
+		"backgroundColorTop": "#F4F5F6",
+		"backgroundColorBottom": "#ffffff",
+		"mp-360": {
+			"navigationStyle": "custom"
+		},
+		"h5": {
+			"maxWidth": 1190,
+			"navigationBarTextStyle": "black",
+			"navigationBarBackgroundColor": "#F1F1F1"
+		}
+	},
+	"tabBar": {
+		"color": "#000000",
+		"selectedColor": "#C53B2E",
+		"borderStyle": "white",
+		"backgroundColor": "#ffffff",
+		"list": [
+			{
+				"pagePath": "pages/tabBar/home/home",
+				"iconPath": "static/home.png",
+				"selectedIconPath": "static/home-selected.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/tabBar/collect/collect",
+				"iconPath": "static/collect.png",
+				"selectedIconPath": "static/collect-selected.png",
+				"text": "收藏"
+			},
+			{
+				"pagePath": "pages/tabBar/personal/personal",
+				"iconPath": "static/me.png",
+				"selectedIconPath": "static/me-selected.png",
+				"text": "我"
+			}
+		]
+	}
+}

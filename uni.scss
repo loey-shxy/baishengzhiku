@@ -1,0 +1,167 @@
+@import '@/uni_modules/uni-scss/variables.scss';
+
+.ellipsis-multiline {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.ellipsis-multiline {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+view {
+	box-sizing: border-box;
+}
+// page,
+uni-app, 
+uni-page, 
+uni-page-wrapper, 
+uni-page-body {
+	height: 100%;
+}
+.app-container {
+	height: 100%;
+	color: #000;
+}
+
+.app-content {
+	height: calc(100% - 118px);
+}
+
+.app-header {
+	padding-top: 118px;
+	position: sticky;
+	background-color: #fff;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 999;
+	.app-header-content {
+		height: 44px;
+		line-height: 44px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+		text-align: center;
+		font-size: 17px;		
+		font-weight: bold;	
+				
+		.arrow-left {
+			position: absolute;
+			left: 12px;
+		}
+	}
+}
+
+.search-box {
+	position: relative;
+	margin: 18px 17px 17px;
+	height: 33px;
+	
+	.search-icon {
+		width: 16px;
+		height: 16px;
+		margin-left: 10px;
+	}
+	
+	:deep(.uni-easyinput) {
+		height: 33px;
+		
+		.uni-easyinput__content {
+			background-color: #F9F9F9 !important;
+			border-radius: 17px;
+		}
+		
+		.uni-easyinput__content-input {
+			height: 33px;
+		}
+	}
+}
+
+.news-item {
+	margin-top: 10px;
+	background-color: #fff;
+	padding: 15px 17px 18px;
+	display: flex;
+	position: relative;
+	
+	.news-status {
+		position: absolute;
+		left: 21px;
+		bottom: 23px;
+		border-radius: 4px;
+		padding: 0 8px;
+		line-height: 22px;
+		color: #fff;
+		z-index: 3;
+		font-size: 12px;
+		
+		&.type_free {
+			background-color: #EFC37F;
+			color: #000;
+		}
+		
+		&.type_not-subscribed {
+			background-color: #C53B2E;
+		}
+		
+		&.type_subscribed {
+			background-color: #0752A5;
+		}
+	}
+	
+	&_image {
+		width: 120px;
+		height: 91px;
+		border-radius: 3px;
+		flex-shrink: 0;
+		
+		&.size-medium {
+			width: 120px;
+			height: 91px;
+		}
+		
+		&.size-large {
+			width: 140px;
+			height: 110px;
+		}
+	}
+	
+	&_info {
+		padding: 11px 0 8px 18px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		
+		.news-title {
+			font-weight: bold;
+		}
+		
+		.news-content {
+			color: #666;
+			font-size: 12px;
+		}
+		
+		.news-footer {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			color: #9E9E9E;
+			font-size: 12px;
+		}
+	}
+}
