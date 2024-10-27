@@ -17,9 +17,7 @@ const _sfc_main = {
     const back = () => {
       common_vendor.index.navigateBack();
     };
-    const keywords = common_vendor.ref("");
-    const search = () => {
-    };
+    common_vendor.ref("");
     const currentTab = common_vendor.ref("news");
     const tabs = common_vendor.ref([
       { key: "news", title: "新闻动态" },
@@ -48,14 +46,11 @@ const _sfc_main = {
           color: "#000000"
         }),
         c: common_assets._imports_0$1,
-        d: common_vendor.o(search),
-        e: common_vendor.o(($event) => keywords.value = $event),
-        f: common_vendor.p({
-          trim: "all",
-          inputBorder: false,
-          modelValue: keywords.value
+        d: common_vendor.o(_ctx.toSearch),
+        e: common_vendor.p({
+          inputBorder: false
         }),
-        g: common_vendor.f(tabs.value, (tab, k0, i0) => {
+        f: common_vendor.f(tabs.value, (tab, k0, i0) => {
           return {
             a: common_vendor.t(tab.title),
             b: currentTab.value === tab.key ? 1 : "",
@@ -63,9 +58,9 @@ const _sfc_main = {
             d: common_vendor.o(($event) => handleTabChange(tab.key), tab.key)
           };
         }),
-        h: currentTab.value === "news"
+        g: currentTab.value === "news"
       }, currentTab.value === "news" ? {
-        i: common_vendor.f(list.value, (item, k0, i0) => {
+        h: common_vendor.f(list.value, (item, k0, i0) => {
           return common_vendor.e({
             a: item.isNew
           }, item.isNew ? {} : {}, {
@@ -76,9 +71,9 @@ const _sfc_main = {
           });
         })
       } : {}, {
-        j: currentTab.value === "report"
+        i: currentTab.value === "report"
       }, currentTab.value === "report" ? {
-        k: common_vendor.f(list.value, (item, k0, i0) => {
+        j: common_vendor.f(list.value, (item, k0, i0) => {
           return {
             a: common_vendor.t(item.title),
             b: common_vendor.t(item.address),
@@ -86,7 +81,7 @@ const _sfc_main = {
             d: item.id
           };
         }),
-        l: common_assets._imports_1
+        k: common_assets._imports_1$1
       } : {});
     };
   }

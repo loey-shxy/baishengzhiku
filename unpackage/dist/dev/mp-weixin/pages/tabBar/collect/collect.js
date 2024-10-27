@@ -41,7 +41,7 @@ const _sfc_main = {
             j: common_vendor.o(($event) => _ctx.toDetail(item), item.id)
           });
         }),
-        b: common_assets._imports_0$2
+        b: common_assets._imports_1$2
       };
     };
   }

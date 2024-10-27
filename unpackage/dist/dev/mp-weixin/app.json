@@ -4,7 +4,12 @@
     "pages/tabBar/collect/collect",
     "pages/tabBar/personal/personal",
     "pages/baishengdongtai/baishengdongtai",
-    "pages/baishengfuwu/baishengfuwu"
+    "pages/baishengfuwu/baishengfuwu",
+    "pages/login/login",
+    "pages/annualssubcribe/annualssubcribe",
+    "pages/search/search",
+    "pages/dongtaixiangqing/dongtaixiangqing",
+    "pages/subscribedetail/subscribedetail"
   ],
   "window": {
     "pageOrientation": "portrait",

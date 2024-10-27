@@ -12,8 +12,10 @@ if (!Math) {
 const _sfc_main = {
   __name: "home",
   setup(__props) {
-    const keywords = common_vendor.ref("");
-    const search = () => {
+    const toSearch = () => {
+      common_vendor.index.navigateTo({
+        url: "/pages/search/search"
+      });
     };
     const list = common_vendor.ref([]);
     const getList = async () => {
@@ -27,8 +29,6 @@ const _sfc_main = {
     common_vendor.onMounted(() => {
       getList();
     });
-    const more = () => {
-    };
     const toDynamic = () => {
       common_vendor.index.navigateTo({
         url: "/pages/baishengdongtai/baishengdongtai"
@@ -43,25 +43,22 @@ const _sfc_main = {
       return {
         a: common_assets._imports_0,
         b: common_assets._imports_0$1,
-        c: common_vendor.o(search),
-        d: common_vendor.o(($event) => keywords.value = $event),
-        e: common_vendor.p({
-          trim: "all",
-          inputBorder: false,
+        c: common_vendor.o(toSearch),
+        d: common_vendor.p({
           placeholder: "搜索文档",
-          modelValue: keywords.value
+          inputBorder: false
         }),
+        e: common_assets._imports_2,
         f: common_assets._imports_2,
         g: common_assets._imports_2,
-        h: common_assets._imports_2,
-        i: common_assets._imports_3,
-        j: common_vendor.o(toDynamic),
-        k: common_assets._imports_4,
-        l: common_vendor.o(toService),
-        m: common_assets._imports_5,
-        n: common_assets._imports_6,
-        o: common_vendor.o(more),
-        p: common_vendor.f(list.value, (item, k0, i0) => {
+        h: common_assets._imports_3,
+        i: common_vendor.o(toDynamic),
+        j: common_assets._imports_4,
+        k: common_vendor.o(toService),
+        l: common_assets._imports_1,
+        m: common_assets._imports_6,
+        n: common_vendor.o(toDynamic),
+        o: common_vendor.f(list.value, (item, k0, i0) => {
           return {
             a: common_vendor.t(item.title),
             b: common_vendor.t(item.address),
@@ -70,7 +67,7 @@ const _sfc_main = {
             e: common_vendor.o(($event) => _ctx.toDetail(item), item.id)
           };
         }),
-        q: common_assets._imports_1
+        p: common_assets._imports_1$1
       };
     };
   }

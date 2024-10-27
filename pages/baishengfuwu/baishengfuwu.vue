@@ -2,7 +2,7 @@
 	<view class="app-container">
 		<view class="app-header">
 			<view class="app-header-content">
-				<uni-icons @click="back" class="arrow-left" type="left" size="20" color="#000000"></uni-icons>
+				<uni-icons @click="back" class="arrow-left" type="left" size="20" color="#000"></uni-icons>
 				百生服务
 			</view>
 		</view>
@@ -21,20 +21,64 @@
 					</view>
 				</view>
 			</view>
-			<view class="services-extra">
-				<image class="extra-search" src="../../static/home/search.png" mode=""></image>
+			<view class="services-extra" v-if="currentTab === 'neican'">
+				<view 
+					class="article-type" 
+					v-if="currentRecommend === 'month'" 
+					@click="currentRecommend = 'year'"
+				>年</view>
+				<view 
+					class="article-type" 
+					v-if="currentRecommend === 'year'" 
+					@click="currentRecommend = 'month'"
+				>月</view>
+				<uni-icons type="search" color="#C53B2E" size="20"></uni-icons>
 			</view>
 		</view>
 		
+		<!-- 月刊推荐 -->
 		<scroll-view
 			scroll-y="true" 
 			class="news-list-scroll" 
-			v-if="currentTab === 'neican'"
+			v-if="currentTab === 'neican' && currentRecommend === 'month'"
 		>
-			<view class="services-news-item" v-for="item in list" :key="item.id">
+			<view class="services-news-item" v-for="item in list" :key="item.id" @click="subscribeDetail(item)">
+				<view
+					:class="['news-status', `type_${STATUS[item.status].value}`]" 
+					v-if="item.status !== undefined">
+					{{ STATUS[item.status].label }}
+				</view>
 				<cover-image src="../../static/fuwu.png"></cover-image>
 				<view class="services-news-title ellipsis">{{ item.title }}</view>
 				<view class="services-news-subtitle ellipsis">{{ item.content }}</view>
+			</view>
+		</scroll-view>
+		
+		<!-- 年刊推荐 -->
+		<scroll-view
+			scroll-y="true" 
+			class="news-list-scroll" 
+			v-if="currentTab === 'neican' && currentRecommend === 'year'"
+		>
+			<view class="news-list">
+				<view class="news-item" v-for="item in monthList" :key="item.id" @click="annuals(item)">
+					<view 
+						:class="['news-status', `type_${STATUS[item.status].value}`]" 
+						v-if="item.status !== undefined">
+						{{ STATUS[item.status].label }}
+					</view>
+					<image class="news-item_image size-large" src="../../static/collect/list.png" mode="scaleToFill"></image>
+					<view class="news-item_info">
+						<view class="news-title ellipsis-multiline">{{ item.title }}</view>
+						<view class="news-content ellipsis-multiline" v-if="item.content">
+							{{ item.content }}
+						</view>
+						<view class="news-footer">
+							<view class="news-desc_address">{{ item.address }}</view>
+							<view class="news-desc_date">{{ item.createTime }}</view>
+						</view>
+					</view>
+				</view>
 			</view>
 		</scroll-view>
 		
@@ -58,6 +102,8 @@ const back = () => {
 	uni.navigateBack();
 }
 
+const currentRecommend = ref('month')
+
 const currentTab = ref('neican')
 const tabs = ref([
 	{ key: 'neican', title: '内参订阅' },
@@ -73,10 +119,31 @@ const getList = async () => {
 	list.value = Array(10).fill({}).map((_, index) => ({
 		id: index + 1,
 		title: '《百生决策参考》2023年刊 共12期',
-		content: '2023年1月-2023年12月，共12期。订阅后可免费邮寄订阅后可免费邮寄'
+		content: '2023年1月-2023年12月，共12期。订阅后可免费邮寄订阅后可免费邮寄',
+		status: Math.floor(index % 4) === 0 ? 0 : Math.floor(index % 3) === 0 ? 2 : 1
 	}))
 }
 getList()
+
+const STATUS = {
+	0: { value: 'free', label: '免费' },
+	1: { value: 'not-subscribed', label: '未订阅' },
+	2: { value: 'subscribed', label: '已订阅' },
+}
+const monthList = ref([])
+const getMonthList = async () => {
+	monthList.value = Array(10).fill({}).map((_, index) => ({
+		id: index + 1,
+		title: `2024年第${index+1}期`,
+		content: '围绕推动大规模设备更新和消费品以日换新围绕推动大规模设备更新和消费品以日换新围绕推动大规模设备更新和消费品以日换新',
+		createTime: '2024-10-26 15:30',
+		address: '四川',
+		status: Math.floor(index % 4) === 0 ? 0 : Math.floor(index % 3) === 0 ? 2 : 1
+		
+	}))
+}
+
+getMonthList()
 
 const jueceList = ref([
 	{
@@ -100,6 +167,18 @@ const jueceList = ref([
 		icon: new URL('../../static/juece/pucha.png', import.meta.url).href
 	},
 ])
+
+const annuals = (item) => {
+	uni.navigateTo({
+		url: '/pages/annualssubcribe/annualssubcribe'
+	})
+}
+
+const subscribeDetail = (item) => {
+	uni.navigateTo({
+		url: '/pages/subscribedetail/subscribedetail'
+	})
+}
 </script>
 
 <style lang="scss" scoped>
@@ -148,9 +227,16 @@ const jueceList = ref([
 		display: flex;
 		align-items: center;
 		
-		.extra-search {
+		.article-type {
+			margin-right: 16px;
+			color: #C53B2E;
+			border: 2px solid #C53B2E;
+			border-radius: 4px;
 			width: 20px;
 			height: 20px;
+			text-align: center;
+			line-height: 16px;
+			font-size: 12px;
 		}
 	}
 }
@@ -159,25 +245,6 @@ const jueceList = ref([
 	height: calc(100% - 167px);
 	padding: 1px 0 8px;
 	background-color: #f9f9f9;
-	
-	.services-news {
-		&-item {
-			margin-top: 8px;
-			background-color: #fff;
-			padding: 16px;
-		}
-		
-		&-title {
-			margin-top: 12px;
-			font-weight: bold;
-		}
-		
-		&-subtitle {
-			margin-top: 7px;
-			color: #666;
-			font-size: 12px;
-		}
-	}
 	
 	.juece-news {
 		&-item {

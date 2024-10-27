@@ -15,13 +15,10 @@
 		>
 			<!-- start search -->
 			<view class="search-box">
-				<uni-easyinput 
-					class="uni-mt-5"
-					trim="all" 
-					v-model="keywords" 
-					:inputBorder="false"
-					placeholder="搜索文档" 
-					@input="search"
+				<uni-easyinput
+					placeholder="搜索文档"
+					:inputBorder="false"		
+					@focus="toSearch"
 				>
 					<template #left>
 						<image class="search-icon" src="../../../static/home/search.png" mode="scaleToFill"></image>
@@ -87,7 +84,7 @@
 						<text>百生动态</text>
 						<image class="icon-star" src="../../../static/home/star.png" mode="scaleToFill"></image>
 					</view>
-					<view class="news-header-more" @click="more">
+					<view class="news-header-more" @click="toDynamic">
 						<text>更多</text>
 						<image class="icon-more" src="../../../static/home/more.png" mode="scaleToFill"></image>
 					</view>
@@ -115,9 +112,10 @@
 import { ref, onMounted } from 'vue';
 
 // 搜索
-const keywords = ref('')
-const search = () => {
-	
+const toSearch = () => {
+	uni.navigateTo({
+		url: '/pages/search/search'
+	})
 }
 
 const list = ref([])
@@ -163,8 +161,6 @@ const toService = () => {
 			height: 20px;
 		}
 	}
-	
-	
 	
 	.swiper-container {
 		height: 206px;

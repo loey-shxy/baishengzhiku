@@ -7,9 +7,12 @@
 		<view class="personal-page-content">
 			<view class="personal">
 				<cover-image src="" class="personal-avatar"></cover-image>
-				<view class="personal-info">
+				<view class="personal-info" v-if="isLogin">
 					<view class="username">昵称</view>
 					<view class="account">用户名: 1115454</view>
+				</view>
+				<view class="personal-info" v-else>
+					<view class="username" @click="toLogin">立即登录</view>
 				</view>
 				<uni-icons class="arrow-right" type="right" size="16" color="#9e9e9e"></uni-icons>
 			</view>
@@ -69,7 +72,16 @@
 </template>
 
 <script setup>
-	
+import { ref } from 'vue'
+
+const userInfo = ref(uni.getStorageSync('userInfo'))
+const isLogin = ref(!!userInfo.value?.id)
+
+const toLogin = () => {
+	uni.navigateTo({
+		url: '/pages/login/login'
+	})
+}
 </script>
 
 <style lang="scss" scoped>

@@ -7,6 +7,11 @@ if (!Math) {
   "./pages/tabBar/personal/personal.js";
   "./pages/baishengdongtai/baishengdongtai.js";
   "./pages/baishengfuwu/baishengfuwu.js";
+  "./pages/login/login.js";
+  "./pages/annualssubcribe/annualssubcribe.js";
+  "./pages/search/search.js";
+  "./pages/dongtaixiangqing/dongtaixiangqing.js";
+  "./pages/subscribedetail/subscribedetail.js";
 }
 const _sfc_main = {
   onLaunch: function() {

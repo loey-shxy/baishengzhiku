@@ -7657,6 +7657,7 @@ exports.n = n;
 exports.o = o;
 exports.onMounted = onMounted;
 exports.p = p;
+exports.reactive = reactive;
 exports.ref = ref;
 exports.resolveComponent = resolveComponent;
 exports.s = s;

@@ -8,12 +8,9 @@
 		</view>
 		
 		<view class="search-box">
-			<uni-easyinput 
-				class="uni-mt-5"
-				trim="all" 
-				v-model="keywords" 
-				:inputBorder="false"
-				@input="search"
+			<uni-easyinput
+				:inputBorder="false"		
+				@focus="toSearch"
 			>
 				<template #left>
 					<image class="search-icon" src="../../static/home/search.png" mode="scaleToFill"></image>
@@ -34,7 +31,7 @@
 		>
 			<view class="news-single-item" v-for="item in list" :key="item.id">
 				<view class="news-item-title">
-					<view class="news-status" v-if="item.isNew">New</view>
+					<view class="news-new-status" v-if="item.isNew">New</view>
 					<view class="news-title">{{ item.title }}</view>
 				</view>
 				<view class="news-other">
@@ -150,7 +147,7 @@ getList()
 			display: flex;
 			align-items: center;
 			
-			.news-status {
+			.news-new-status {
 				color: #fff;
 				line-height: 18px;
 				padding: 0 2px;

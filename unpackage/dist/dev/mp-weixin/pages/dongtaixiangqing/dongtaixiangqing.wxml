@@ -1,0 +1,1 @@
+<view class="app-container"><view class="app-header"><view class="app-header-content"><uni-icons wx:if="{{b}}" bindclick="{{a}}" class="arrow-left" u-i="9f1ce672-0" bind:__l="__l" u-p="{{b}}"></uni-icons> 百生动态详情 </view></view><view class="app-content"></view></view>
